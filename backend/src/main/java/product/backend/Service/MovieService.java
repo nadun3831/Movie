@@ -1,5 +1,6 @@
 package product.backend.Service;
 
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import product.backend.Model.Movie;
@@ -18,9 +19,15 @@ public class MovieService {
         return movieRepository.save(movie);
     }
 
+
+
    public List<Movie> AllMovies()
     {
         return movieRepository.findAll();
+    }
+
+    public Movie movieById(ObjectId id){
+        return movieRepository.findById(id).orElseThrow(null);
     }
 
 

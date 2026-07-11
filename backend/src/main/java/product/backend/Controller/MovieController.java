@@ -1,5 +1,6 @@
 package product.backend.Controller;
 
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -25,6 +26,13 @@ public class MovieController
     public ResponseEntity<List<Movie>> all()
     {
         return new ResponseEntity<List<Movie>>(movieService.AllMovies(),HttpStatus.OK);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Movie> singleMovie(@PathVariable ObjectId id)
+    {
+        return new ResponseEntity<Movie>(movieService.movieById(id),HttpStatus.OK);
+
     }
 }
 
